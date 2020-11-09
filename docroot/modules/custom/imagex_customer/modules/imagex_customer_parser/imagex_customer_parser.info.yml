@@ -1,0 +1,8 @@
+name: ImageX Customer Parser
+type: module
+description: Creates a customer CSV Parser that runs during cron jobs
+core: 8.x
+dependencies:
+  - imagex_customer
+  - automated_cron
+package: ImageX

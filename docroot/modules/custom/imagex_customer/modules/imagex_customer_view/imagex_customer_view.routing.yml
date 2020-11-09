@@ -1,0 +1,8 @@
+imagex_customer_view.content:
+  path: '/customer-list/{cid}'
+  defaults:
+    _controller: '\Drupal\imagex_customer_view\Controller\CustomerList::content'
+    cid : 'all'
+    _title: 'Customer List'
+  requirements:
+    _permission: 'access content'

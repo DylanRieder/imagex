@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ */
+function imagex_customer_parser_cron() {
+
+  //Check last time paraser was run
+  $last_run = \Drupal::state()->get('imagex_customer_parser.last_run', 0);
+
+  // If 60 minutes passed since last time.
+  if ((\Drupal::time()->getRequestTime() - $last_run) > 3600) {
+
+    //Path to the customer csv file to parse through
+    $path =  "sites/default/files/customers/customers.csv";
+    $row_data = array();
+
+    //Loop through the CSV rows. collecting all of the data
+    if (($handle = fopen($path, "r")) !== FALSE) {
+      while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        $row_data[] = $row;
+      }
+      fclose($handle);
+    }
+
+    //Get all customers
+    $cids = \Drupal::entityQuery('imagex_customer_customer')->execute();
+    $customers = \Drupal::entityTypeManager()->getStorage('imagex_customer_customer')->loadMultiple($cids);
+
+    foreach ($row_data as $data) {
+        if (!empty($data)) {
+        //First column is id, check for positive intergers, otherwise create new customer
+        $cid = $data[0];
+        //Add Flag to check if new customer
+        $is_exisiting = FALSE;
+
+        //Check to see if entity exists with customer ID, update entity if it exists
+        if (array_key_exists($cid, $customers)) {
+          $customers[$cid]->set('name', $data[1]);
+          $customers[$cid]->set('balance', $data[2]);
+          $customers[$cid]->save();
+        } else {
+          //Create new entity
+          $customer = \Drupal::entityTypeManager()->getStorage('imagex_customer_customer')->create(['name' => $data[1], 'balance' => $data[2]]);
+          $customer->save();
+        }
+      }
+    }
+    // Update last run.
+    \Drupal::state()->set('imagex_customer_parser.last_run', REQUEST_TIME);
+  }
+}
