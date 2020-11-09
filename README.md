@@ -1,3 +1,13 @@
+# ImageX Assignment Parser Note
+
+Please note that in order for the parser to work the file customers.csv must be present in ```sites/default/files/customers/customers.csv```. The following was used on my local to test
+
+```
+1,Dylan M Rieder,123456
+2,John Doe,654321
+3,Jane D Doe,10000
+```
+
 # Docksal powered Drupal 8 Installation
 
 This is a sample vanilla Drupal 8 installation pre-configured for use with Docksal.  
