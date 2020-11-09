@@ -1,0 +1,8 @@
+name: ImageX Customer View
+type: module
+description: Creates a customer list custom route using a view
+core: 8.x
+dependencies:
+  - imagex_customer
+  - views
+package: ImageX
