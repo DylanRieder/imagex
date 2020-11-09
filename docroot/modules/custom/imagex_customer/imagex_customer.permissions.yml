@@ -1,0 +1,11 @@
+view customer entity:
+  title: 'View Customer entity'
+add customer entity:
+  title: 'Add Customer entity'
+edit customer entity:
+  title: 'Edit Customer Entity'
+delete customer entity:
+  title: 'Delete Customer entity'
+administer customer entity:
+  title: 'Administer Customer entity'
+  restrict access: TRUE

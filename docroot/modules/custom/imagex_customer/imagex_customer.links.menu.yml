@@ -1,0 +1,12 @@
+# Define the menu links for this module
+
+entity.imagex_customer_customer.collection:
+  title: 'ImageX : Customers Listing'
+  route_name: entity.imagex_customer_customer.collection
+  description: 'List Customers'
+  weight: 10
+imagex_customer_customer.admin.structure.settings:
+  title: Customers Settings
+  description: 'Configure Customers entity'
+  route_name:  imagex_customer.customer_settings
+  parent: system.admin_structure

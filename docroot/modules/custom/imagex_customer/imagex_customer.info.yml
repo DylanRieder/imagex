@@ -1,0 +1,7 @@
+name: ImageX Customer
+type: module
+description: Creates a customer entity
+core: 8.x
+package: ImageX
+dependencies:
+  - restui

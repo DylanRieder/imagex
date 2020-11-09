@@ -1,0 +1,56 @@
+
+# actions.
+entity.imagex_customer_customer.canonical:
+  path: '/imagex_customer_customer/{imagex_customer_customer}'
+  defaults:
+  # Calls the view controller, defined in the annotation of the customer entity
+    _entity_view: 'imagex_customer_customer'
+    _title: 'Customer Content'
+  requirements:
+  # Calls the access controller of the entity, $operation 'view'
+    _entity_access: 'imagex_customer_customer.view'
+
+entity.imagex_customer_customer.collection:
+  path: '/admin/customer-list'
+  defaults:
+  # Calls the list controller, defined in the annotation of the customer entity.
+    _entity_list: 'imagex_customer_customer'
+    _title: 'Customer List'
+  requirements:
+  # Checks for permission directly.
+    _permission: 'administer customer entity'
+
+imagex_customer.customer_add:
+  path: '/imagex_customer_customer/add'
+  defaults:
+  # Calls the form.add controller, defined in the customer entity.
+    _entity_form: imagex_customer_customer.add
+    _title: 'Add Customer'
+  requirements:
+    _entity_create_access: 'imagex_customer_customer'
+
+entity.imagex_customer_customer.edit_form:
+  path: '/imagex_customer_customer/{imagex_customer_customer}/edit'
+  defaults:
+  # Calls the form.edit controller, defined in the customer entity.
+    _entity_form: imagex_customer_customer.edit
+    _title: 'Edit Customer'
+  requirements:
+    _entity_access: 'imagex_customer_customer.edit'
+
+entity.imagex_customer_customer.delete_form:
+  path: '/customer/{imagex_customer_customer}/delete'
+  defaults:
+    # Calls the form.delete controller, defined in the customer entity.
+    _entity_form: imagex_customer_customer.delete
+    _title: 'Customer Contact'
+  requirements:
+    _entity_access: 'imagex_customer_customer.delete'
+
+imagex_customer.customer_settings:
+  path: 'admin/structure/imagex_customer_customer_settings'
+  defaults:
+    _form: '\Drupal\imagex_customer\Form\CustomerSettingsForm'
+    _title: 'Customer Settings'
+  requirements:
+    _permission: 'administer customer entity'
