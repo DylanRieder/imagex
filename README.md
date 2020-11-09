@@ -1,6 +1,6 @@
 # ImageX Assignment Parser Note
 
-Please note that in order for the parser to work the file customers.csv must be present in ```sites/default/files/customers/customers.csv```. The following was used on my local to test
+Please note that in order for the parser to work the file `customers.csv` must be present in ```sites/default/files/customers/```. The following was used on my local to test
 
 ```
 1,Dylan M Rieder,123456
